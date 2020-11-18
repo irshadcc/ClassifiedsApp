@@ -1,0 +1,27 @@
+.about-item-img-wrapper img{
+
+    width : 250px;
+}
+@media (min-width: 320px) and (max-width : 992px){ 
+
+
+    .about-item {
+        margin : 6% 0 ;
+    }
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .about-item {
+        margin : 2% 0 ;
+    }
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+    
+}

@@ -1,0 +1,68 @@
+
+nav {
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.1);
+    background-color : #fcfcfc ;
+}
+.navbar-toggler{
+    border : none ;
+}
+
+.brand-logo{
+
+    width: 32px;
+    height: 32px;
+    vertical-align: sub;
+}
+.brand-text{
+    font-family: 'Roboto','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600 ;
+}
+.btn {
+
+    /* border : solid 1px black ; */
+    font-weight: 500;
+}
+.btn svg {
+    fill : none ;
+    stroke : black ;
+    stroke-width: 2px;
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 320px) and (max-width : 992px){ 
+
+    .mobile{
+
+        display: inline-block;
+
+    }
+    .navbar-nav{
+        margin : 15px 0px ;
+
+    }
+    .nav-item button {
+        width : 100% ;
+    }
+    .nav-item {
+        margin : 0.25rem 0 ;
+    }
+    
+
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .mobile {
+        display : none !important;
+    }
+
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    
+    
+}
