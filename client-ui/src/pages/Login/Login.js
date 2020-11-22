@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react' ;
 
 
 import NavBar from '../../components/NavBar/NavBar' ;
-import UserContext from '../../contexts/UserContext';
+import {UserContext} from '../../contexts/UserContext';
 import LoginComponent from './LoginComponent' ;
 
 
@@ -17,7 +17,7 @@ function About(){
       <div className="row about-item">
 
         <div className="col-lg-6 d-flex justify-content-center about-item-img-wrapper">
-            <img src="assets/web-search.svg" />
+            <img src="assets/web-search.svg" alt="Web Search Icon"/>
         </div>
         <div className="col-lg-6 d-flex flex-column justify-content-center">
             <h2>Search for Properties</h2>
@@ -30,7 +30,7 @@ function About(){
       <hr></hr>
       <div className="row about-item ">
         <div className="col-lg-6 d-flex justify-content-center about-item-img-wrapper">
-            <img src="assets/wishlist-about.svg" />
+            <img src="assets/wishlist-about.svg" alt="Wishlist Icon"/>
         </div>
         <div className="col-lg-6 d-flex flex-column justify-content-center">
             <h2>Wishlist</h2>

@@ -6,18 +6,18 @@ import Password from '../utils/password' ;
 
 interface UserDoc extends mongoose.Document {
 
-    firstName : string ,
-    lastName : string ,
+    first_name : string ,
+    last_name : string ,
     gender : string,
     email  : string ,
     password : string ,
 
     info : {
         status : string,
-        createdAt : Date ,
-        lastLogin : {
-            attemptAt : Date ,
-            attemptCount : number ;
+        created_at : Date ,
+        last_login : {
+            attempt_at : Date ,
+            attempt_count : number ;
         }
     }
 }
@@ -25,11 +25,11 @@ interface UserDoc extends mongoose.Document {
 const userSchema : mongoose.Schema = new mongoose.Schema(
 
     {
-        firstName : {
+        first_name : {
             type : String,
             required : true 
         },
-        lastName : {
+        last_name : {
             type : String ,
             required : true 
         },
@@ -51,13 +51,13 @@ const userSchema : mongoose.Schema = new mongoose.Schema(
                 type : String ,
                 enum : ['Active','InActive','Blocked','Verification Pending']
             },
-            createdAt : {
+            created_at : {
                 type : Date,
                 default : Date.now()
             } ,
-            lastLogin : {
-                attemptAt : Date,
-                attemptCount : Number 
+            last_login : {
+                attempt_at : Date,
+                attempt_count : Number 
             }
         }
     },

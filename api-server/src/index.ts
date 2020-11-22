@@ -1,55 +1,19 @@
-import express from 'express' ;
 
-import { json } from 'body-parser' ;
-import 'express-async-errors' ;
-import morgan from 'morgan' ;
-import helmet from 'helmet' ;
+import dotenv from 'dotenv' ;
 import mongoose from 'mongoose' ;
-import cookieSession from 'cookie-session' ;
 
+
+if(process.env.NODE_ENV == "dev"){
+    dotenv.config()
+}
+
+
+import app from './app' ;
 import log from './utils/console-log' ;
-import NotFoundError from './errors/not-found-error' ;
-import errorHandler from './middlewares/error-handler' ;
-
-import authRoutes from './routes/auth/routes'
-import propertyRotues from './routes/property/routes'; 
 
 
-
-const app = express() 
-app.set('trust proxy',1)
-
-app.use(morgan('combined'))
-app.use(helmet()) ;
-app.use(json()) ;
-app.use(
-    cookieSession({
-        signed : false,
-        secure : false 
-    })
-);
-
-authRoutes.forEach((router)=>{
-    app.use(router)
-})
-propertyRotues.forEach((router)=>{
-    app.use(router)
-})
-
-
-app.all('*', async (req,res,next)=>{
-    
-    throw new NotFoundError() ;
-})
-app.use(errorHandler) ;
 
 const start = async ()=>{
-
-    process.env.SERVER_PORT = '3000' ;
-    process.env.JWT_KEY = 'secret' ;
-    process.env.MONGO_DB_HOST = 'localhost'
-    process.env.MONGO_DB_PORT = '27017'
-
 
     if(!process.env.SERVER_PORT ){
         throw new Error('SERVER_PORT must be defined')
@@ -67,6 +31,11 @@ const start = async ()=>{
     // if(!process.env.MONGO_DB_USERNAME){
     //     throw new Error('MONGO_DB_USERNAME must be defined') ;
     // }
+    if(!process.env.UPLOADS_BASE_DIR){
+
+        throw new Error('UPLOADS_DIR must be defined'); 
+    }
+    
 
     try {
         const MONGO_DB_URL = "mongodb://" + process.env.MONGO_DB_HOST + ":" +process.env.MONGO_DB_PORT 

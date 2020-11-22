@@ -3,7 +3,10 @@ import mongoose from 'mongoose' ;
 
 interface Image {
 
-    path : string
+    file_name : string,
+    original_file_name : string,
+    file_path : string
+
 }
 
 
@@ -12,14 +15,13 @@ interface PropertyDoc extends mongoose.Document {
     title : string,
     description : string,
 
-    price : {
-        amount : string,
-        rentFrequency : string 
-    },
+    price : number,
 
-    location : mongoose.Types.ObjectId,
+    rent_frequency : string,
 
-    propertyType : String, 
+    location_id : mongoose.Types.ObjectId,
+
+    property_type : String, 
     purpose : String,
     status : String 
 
@@ -28,7 +30,7 @@ interface PropertyDoc extends mongoose.Document {
     tags : string[],
     
     info : Map<string,string>,
-    postedOn : Date, 
+    posted_on : Date, 
 
 }
 
@@ -37,18 +39,17 @@ const PropertySchema = new mongoose.Schema({
 
     title : String,
     description : String,
-    
-    price : {
-        amount : Number, 
-        rentFrequency : String,   
-    },
+   
+    price : Number ,
 
-    location : {
+    rent_frequency : String,
+
+    location_id : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'Location'
     },
 
-    propertyType : {
+    property_type : {
         type : String,
         enum : ["Villa","Apartment"]
     },  
@@ -62,7 +63,10 @@ const PropertySchema = new mongoose.Schema({
     },
 
     images : [{
-        url_path : String
+        file_name : String,
+        original_file_name : String,
+        file_path : String
+    
     }],
     coordinates : {
         type : [Number],
@@ -75,7 +79,7 @@ const PropertySchema = new mongoose.Schema({
         type : Map,
         of : String
     },
-    postedOn : {
+    posted_on : {
         type : Date,
         default : Date.now
     },

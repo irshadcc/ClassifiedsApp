@@ -41,19 +41,20 @@ router.post('/api/users/signin',
                 ])
         }
 
+        // Check the status of the user account
         if(existingUser.info.status == "Blocked" ){
 
-            let timeDiff = new Date().getTime() - existingUser.info.lastLogin.attemptAt.getTime() ;
+            let timeDiff = new Date().getTime() - existingUser.info.last_login.attempt_at.getTime() ;
             if(timeDiff < 3600*1000){
 
-                existingUser.info.lastLogin.attemptAt = new Date()
+                existingUser.info.last_login.attempt_at= new Date()
                 existingUser.save()
 
                 throw new NotAuthorizedError("Account blocked, try after 1 hour again");
             } else {
 
                     existingUser.info.status = "Active"
-                    existingUser.info.lastLogin.attemptCount = 0 ;
+                    existingUser.info.last_login.attempt_count= 0 ;
                     existingUser.save()
             }
         }
@@ -67,9 +68,9 @@ router.post('/api/users/signin',
         const passwordMatch = await Password.compare(existingUser.password,password) ;
         if(! passwordMatch ){
 
-            if(existingUser.info.lastLogin.attemptCount <= 3){
+            if(existingUser.info.last_login.attempt_count <= 3){
 
-                existingUser.info.lastLogin.attemptCount += 1
+                existingUser.info.last_login.attempt_count += 1
                 existingUser.save()
 
                 throw new RequestValidationError([
@@ -86,7 +87,7 @@ router.post('/api/users/signin',
 
             } else {
 
-                existingUser.info.lastLogin.attemptAt = new Date() 
+                existingUser.info.last_login.attempt_at= new Date() 
                 existingUser.info.status = "Blocked"
                 existingUser.save()
 
@@ -112,9 +113,6 @@ router.post('/api/users/signin',
             email : existingUser.email
         }) ;
 
-
-
-
     }
 )
 
@@ -127,7 +125,6 @@ router.post('/api/users/signout', (req,res)=>{
         "message" : "success"
     })
 })
-
 
 
 

@@ -6,10 +6,6 @@ import UserContext from '../../contexts/UserContext' ;
 import './NavBar.css'
 
 
-
-
-
-
 function NavBar(props){
 
 
@@ -63,8 +59,7 @@ function NavBar(props){
         <nav className="navbar navbar-expand-lg navbar-light ">
             <Link className="navbar-brand" to="/">
                 <img className="brand-logo mr-3" src="icons/HomeLogo.svg" />    
-                <span className="brand-text">PROPERTY FIND</span>
-
+                <span className="brand-text">Classifieds</span>
             </Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

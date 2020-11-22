@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router,
         Route, 
         Switch} from 'react-router-dom';
-import UserContext from './contexts/UserContext';
+import {UserContext} from './contexts/UserContext';
 
 import Home from './pages/Home/Home' ;
 import Search from './pages/Search/Search'

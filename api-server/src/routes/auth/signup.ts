@@ -20,7 +20,7 @@ router.post('/api/users/signup',
     async (req : Request, res : Response) => {
 
 
-        const { firstname ,lastname,email, password } = req.body ;
+        const { first_name ,last_name,email, password } = req.body ;
         const existingUser = await User.findOne({ email : email}) ;
         
         if(existingUser){
@@ -33,14 +33,14 @@ router.post('/api/users/signup',
 
 
         const user = new User({
-            firstName : firstname,
-            lastName : lastname,
+            first_name : first_name,
+            last_name : last_name,
             email : email ,
             password : password,
             info : {
                 status : "Active",
-                lastLogin : {
-                    attemptCount : 0
+                last_login: {
+                    attempt_count: 0
                 }
             }
         })
